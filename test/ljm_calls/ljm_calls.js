@@ -78,7 +78,7 @@ function create_ljm_sync_test(functionName, testInfo, nameAppend) {
 			console.log(
 				' ! Skipping Test:',
 				functionName + nameAppend,
-				'Requres LJM Version:',
+				'Requires LJM Version:',
 				minVersion
 			);
 			test.done();

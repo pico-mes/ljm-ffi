@@ -7,6 +7,7 @@ var testGroups = {
 	'basic_ljm_calls': true,
 	'ljm_calls': {
 		'ljm_calls': true,
+		'open_all': true,
 	}
 	// 'config_loader': {
 	// 	'basic': false,
