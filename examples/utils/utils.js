@@ -25,6 +25,7 @@ function getHandleInfo(handle, cb) {
 		// console.log('Handle Info', data);
 		var ipStr = parseIPAddress(data.IPAddress);
 		var deviceData = {
+			'H': handle,
 			'DT': data.DeviceType,
 			'CT': data.ConnectionType,
 			'SN': data.SerialNumber,
@@ -57,6 +58,7 @@ function getHandleInfoSync(handle) {
 	);
 	var ipStr = parseIPAddress(data.IPAddress);
 	var deviceData = {
+		'H': handle,
 		'DT': data.DeviceType,
 		'CT': data.ConnectionType,
 		'SN': data.SerialNumber,
