@@ -19,7 +19,7 @@ console.log();
 function openOneEthernetDevice() {
 	// Open the first found T7.
 	console.log('Opening the first found Ethernet device');
-	data = ljm.LJM_OpenS('LJM_dtT7', 'LJM_ctEthernet', 'LJM_idANY', 0);
+	data = ljm.LJM_OpenS('LJM_dtT7', 'LJM_ctUDP', 'LJM_idANY', 0);
 
 	// Exit the program if a device was not found.
 	if(data.ljmError !== 0) {
@@ -56,7 +56,6 @@ function performListAllTCP() {
 	console.log('Performing OpenAll TCP')
 	openAllData = ljm.LJM_OpenAll(7, 2, 0, aHandles, 0,0, '');
 
-	// console.log('openAllData', openAllData);
 	parseOpenAllData(openAllData, 'Opened Devices TCP:');
 }
 
@@ -65,7 +64,6 @@ function performListAllUDP() {
 	console.log('Performing OpenAll UDP')
 	openAllData = ljm.LJM_OpenAll(7, 5, 0, aHandles, 0,0, '');
 
-	// console.log('openAllData', openAllData);
 	parseOpenAllData(openAllData, 'Opened Devices UDP:');
 }
 
