@@ -30,6 +30,7 @@ function getHandleInfo(handle, cb) {
 			'CT': data.ConnectionType,
 			'SN': data.SerialNumber,
 			'IP': ipStr,
+			'Port': data.Port,
 		};
 		cb(deviceData);
 	}
@@ -63,6 +64,7 @@ function getHandleInfoSync(handle) {
 		'CT': data.ConnectionType,
 		'SN': data.SerialNumber,
 		'IP': ipStr,
+		'Port': data.Port,
 	};
 	return deviceData;
 }
