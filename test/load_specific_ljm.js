@@ -51,9 +51,16 @@ var test_cases = {
 
 		// var ljmVersion = '1.11.0';
 		var ljmVersion = undefined;
-		ljm = ljm_ffi.load(ljmVersion);
-		liblabjack = ljm_ffi.loadSafe(ljmVersion);
-		ffi_liblabjack = ljm_ffi.loadRaw(ljmVersion);
+		var loadOptions = {
+			// ljmVersion: 1.1100,
+			// ljmVersion: '1-9-1',
+			// ljmVersion: '1.9.1',
+			ljmVersion: '1_8_8',
+			loadExact: true,
+		};
+		ljm = ljm_ffi.load(loadOptions);
+		liblabjack = ljm_ffi.loadSafe(loadOptions);
+		ffi_liblabjack = ljm_ffi.loadRaw(loadOptions);
 
 		test.done();
 	},
