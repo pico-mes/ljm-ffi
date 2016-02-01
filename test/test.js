@@ -2,13 +2,14 @@
 
 
 var testGroups = {
-	'test_type_helpers': true,
-	'get_ljm_version': true,
-	'basic_ljm_calls': true,
+	'test_type_helpers': false,
+	'get_ljm_version': false,
+	'basic_ljm_calls': false,
 	'ljm_calls': {
-		'ljm_calls': true,
-		'open_all': true,
-	}
+		'ljm_calls': false,
+		'open_all': false,
+	},
+	'load_specific_ljm': true,
 	// 'config_loader': {
 	// 	'basic': false,
 	// },
