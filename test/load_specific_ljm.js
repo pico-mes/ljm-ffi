@@ -53,7 +53,7 @@ if(typeof(approxPlatform) === 'undefined') {
 }
 
 var LJM_VERSION_TO_TEST_FOR = {
-	'linux': '1.8.6',
+	'linux': '1.8.7',
 	'darwin': '1.8.8',
 	'win32': '1.11.0'
 }[approxPlatform];
