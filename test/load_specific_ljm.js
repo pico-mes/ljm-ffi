@@ -43,6 +43,20 @@ var ljm;
 var liblabjack;
 var ffi_liblabjack;
 
+var approxPlatform = {
+    'darwin': 'darwin',
+    'mac': 'darwin',
+    'win32': 'win32',
+}[process.platform];
+if(typeof(approxPlatform) === 'undefined') {
+    approxPlatform = 'linux';
+}
+
+var LJM_VERSION_TO_TEST_FOR = {
+	'linux': '1.8.6',
+	'darwin': '1.8.8',
+	'win32': '1.11.0'
+}[approxPlatform];
 
 /* Define Test Cases */
 var test_cases = {
@@ -55,7 +69,7 @@ var test_cases = {
 			// ljmVersion: 1.1100,
 			// ljmVersion: '1-9-1',
 			// ljmVersion: '1.9.1',
-			ljmVersion: '1_8_8',
+			ljmVersion: LJM_VERSION_TO_TEST_FOR,
 			loadExact: true,
 		};
 		ljm = ljm_ffi.load(loadOptions);
