@@ -103,6 +103,7 @@ function create_ljm_sync_test(functionName, testInfo, nameAppend) {
 		if(typeof(ljm[functionName]) === 'function') {
 			has_function = true;
 			results = ljm[functionName].apply(this, args);
+			log(' - Finished Calling Sync Function', functionName);
 			if(testInfo.expected_results) {
 				test.deepEqual(
 					testInfo.expected_results,
