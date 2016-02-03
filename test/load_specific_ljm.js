@@ -60,6 +60,30 @@ var LJM_VERSION_TO_TEST_FOR = {
 
 /* Define Test Cases */
 var test_cases = {
+	'include the default version of LJM': function(test) {
+		var ljm_ffi = require('../lib/ljm-ffi');
+		ljm = ljm_ffi.load();
+		liblabjack = ljm_ffi.loadSafe();
+		ffi_liblabjack = ljm_ffi.loadRaw();
+
+		test.done();
+	},
+	'Execute LJM_NameToAddress (Sync)': function(test) {
+		var ljmLibraryVersion = ljm.LJM_ReadLibraryConfigS('LJM_LIBRARY_VERSION', 0);
+		var expectedData = {
+			'ljmError': 0,
+			'Parameter': 'LJM_LIBRARY_VERSION',
+			'Value': ljmLibraryVersion.Value,
+		};
+		console.log(' - Installed LJM Library Version:', ljmLibraryVersion.Value);
+		test.deepEqual(ljmLibraryVersion, expectedData);
+		test.done();
+	},
+	'unload ljm': function(test) {
+		var ljm_ffi = require('../lib/ljm-ffi');
+		ljm_ffi.unload();
+		test.done();
+	},
 	'include ljm': function(test) {
 		var ljm_ffi = require('../lib/ljm-ffi');
 
@@ -78,18 +102,18 @@ var test_cases = {
 
 		test.done();
 	},
-	'Execute LJM_NameToAddress (Sync)': function(test) {
+	'Execute LJM_NameToAddress (Sync) -v2': function(test) {
 		var ljmLibraryVersion = ljm.LJM_ReadLibraryConfigS('LJM_LIBRARY_VERSION', 0);
 		var expectedData = {
 			'ljmError': 0,
 			'Parameter': 'LJM_LIBRARY_VERSION',
 			'Value': ljmLibraryVersion.Value,
 		};
-		console.log(' - LJM Library Version:', ljmLibraryVersion.Value);
+		console.log(' - Secondary LJM Library Version:', ljmLibraryVersion.Value);
 		test.deepEqual(ljmLibraryVersion, expectedData);
 		test.done();
 	},
-	'Execute LJM_NameToAddress (Async)': function(test) {
+	'Execute LJM_NameToAddress (Async) -v2': function(test) {
 		function testData(ljmLibraryVersion) {
 			var expectedData = {
 				'ljmError': 0,

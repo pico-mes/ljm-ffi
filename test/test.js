@@ -9,7 +9,7 @@ var testGroups = {
 		'ljm_calls': true,
 		// 'open_all_testing': false,
 	},
-	'load_specific_ljm': false,
+	'load_specific_ljm': true,
 	// 'config_loader': {
 	// 	'basic': false,
 	// },
