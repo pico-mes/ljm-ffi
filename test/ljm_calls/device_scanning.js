@@ -70,6 +70,9 @@ module.exports.LJM_ListAll = {
 	],
 	'throws_err': false,
 	'custom_verify': function(test, results, cb) {
+		if(results.ljmError) {
+			console.log('We got an error...', results.ljmError);
+		}
 		verifyResultKeys(test, results, 'LJM_ListAll');
 		verifyNoLJMError(test, results, 'LJM_ListAll');
 
@@ -95,85 +98,85 @@ module.exports.LJM_ListAll = {
 	},
 };
 
-module.exports.LJM_ListAllS = {
-	'test_args': [
-		{'DeviceType': 'LJM_dtANY'},
-		{'ConnectionType': 'LJM_ctANY'},
-		{'NumFound': 0},
-		{'aDeviceTypes': scanIntArray},
-		{'aConnectionTypes': scanIntArray},
-		{'aSerialNumbers': scanIntArray},
-		{'aIPAddresses': scanIntArray},
-	],
-	'throws_err': false,
-	'custom_verify': function(test, results, cb) {
-		verifyResultKeys(test, results, 'LJM_ListAllS');
-		if(results.NumFound > 0) {
-			var deviceData = [];
+// module.exports.LJM_ListAllS = {
+// 	'test_args': [
+// 		{'DeviceType': 'LJM_dtANY'},
+// 		{'ConnectionType': 'LJM_ctANY'},
+// 		{'NumFound': 0},
+// 		{'aDeviceTypes': scanIntArray},
+// 		{'aConnectionTypes': scanIntArray},
+// 		{'aSerialNumbers': scanIntArray},
+// 		{'aIPAddresses': scanIntArray},
+// 	],
+// 	'throws_err': false,
+// 	'custom_verify': function(test, results, cb) {
+// 		verifyResultKeys(test, results, 'LJM_ListAllS');
+// 		if(results.NumFound > 0) {
+// 			var deviceData = [];
 			
-			for(var i = 0; i < results.NumFound; i++) {
-				var ipStr = parseIPAddress(results.aIPAddresses[i]);
-				deviceData.push({
-					'DT': results.aDeviceTypes[i],
-					'CT': results.aConnectionTypes[i],
-					'SN': results.aSerialNumbers[i],
-					'IP': ipStr,
-				});
-			}
+// 			for(var i = 0; i < results.NumFound; i++) {
+// 				var ipStr = parseIPAddress(results.aIPAddresses[i]);
+// 				deviceData.push({
+// 					'DT': results.aDeviceTypes[i],
+// 					'CT': results.aConnectionTypes[i],
+// 					'SN': results.aSerialNumbers[i],
+// 					'IP': ipStr,
+// 				});
+// 			}
 
-			log(' - Found Devices (', results.NumFound, '):');
-			deviceData.forEach(function(info) {
-				log('  -', info);
-			});
-		}
-		cb();
-	},
-};
+// 			log(' - Found Devices (', results.NumFound, '):');
+// 			deviceData.forEach(function(info) {
+// 				log('  -', info);
+// 			});
+// 		}
+// 		cb();
+// 	},
+// };
 
-var aBytesArray = [];
-for(var i = 0; i < (128 * 2 * 1); i++) {
-	aBytesArray.push(0);
-}
+// var aBytesArray = [];
+// for(var i = 0; i < (128 * 2 * 1); i++) {
+// 	aBytesArray.push(0);
+// }
 
-module.exports.LJM_ListAllExtended = {
-	'test_args': [
-		{'DeviceType': 				0},
-		{'ConnectionType': 			0},
-		{'NumAddresses': 			1},
-		{'aAddresses': 				[0]},
-		{'aNumRegs': 				[2]},
-		{'MaxNumFound': 			128},
-		{'NumFound': 				0},
-		{'aDeviceTypes': 			scanIntArray},
-		{'aConnectionTypes': 		scanIntArray},
-		{'aSerialNumbers': 			scanIntArray},
-		{'aIPAddresses': 			scanIntArray},
-		{'aBytes': 					aBytesArray},
-	],
-	'throws_err': false,
-	'custom_verify': function(test, results, cb) {
-		verifyResultKeys(test, results, 'LJM_ListAllExtended');
-		Object.keys(results);
-		if(results.NumFound > 0) {
-			var deviceData = [];
+// module.exports.LJM_ListAllExtended = {
+// 	'test_args': [
+// 		{'DeviceType': 				0},
+// 		{'ConnectionType': 			0},
+// 		{'NumAddresses': 			1},
+// 		{'aAddresses': 				[0]},
+// 		{'aNumRegs': 				[2]},
+// 		{'MaxNumFound': 			128},
+// 		{'NumFound': 				0},
+// 		{'aDeviceTypes': 			scanIntArray},
+// 		{'aConnectionTypes': 		scanIntArray},
+// 		{'aSerialNumbers': 			scanIntArray},
+// 		{'aIPAddresses': 			scanIntArray},
+// 		{'aBytes': 					aBytesArray},
+// 	],
+// 	'throws_err': false,
+// 	'custom_verify': function(test, results, cb) {
+// 		verifyResultKeys(test, results, 'LJM_ListAllExtended');
+// 		Object.keys(results);
+// 		if(results.NumFound > 0) {
+// 			var deviceData = [];
 			
-			for(var i = 0; i < results.NumFound; i++) {
-				var ipStr = parseIPAddress(results.aIPAddresses[i]);
-				deviceData.push({
-					'DT': results.aDeviceTypes[i],
-					'CT': results.aConnectionTypes[i],
-					'SN': results.aSerialNumbers[i],
-					'IP': ipStr,
-				});
-			}
+// 			for(var i = 0; i < results.NumFound; i++) {
+// 				var ipStr = parseIPAddress(results.aIPAddresses[i]);
+// 				deviceData.push({
+// 					'DT': results.aDeviceTypes[i],
+// 					'CT': results.aConnectionTypes[i],
+// 					'SN': results.aSerialNumbers[i],
+// 					'IP': ipStr,
+// 				});
+// 			}
 
-			log(' - Found Devices (', results.NumFound, '):');
-			deviceData.forEach(function(info) {
-				log('  -', info);
-			});
-		}
-		cb();
-	},
-};
+// 			log(' - Found Devices (', results.NumFound, '):');
+// 			deviceData.forEach(function(info) {
+// 				log('  -', info);
+// 			});
+// 		}
+// 		cb();
+// 	},
+// };
 
 
