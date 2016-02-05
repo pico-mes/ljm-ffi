@@ -76,7 +76,7 @@ function getHandleInfos(handles, cb) {
 
 
 module.exports.LJM_OpenAll = {
-	'min_ljm_version': 1.09,
+	'min_ljm_version': 1.1101,
 	'test_args': [
 		{'DeviceType': 				0},
 		{'ConnectionType': 			0},
