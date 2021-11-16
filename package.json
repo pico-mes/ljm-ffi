@@ -1,10 +1,10 @@
 {
-    "name": "ljm-ffi",
-    "version": "2.0.0",
-    "description": "nodejs library for using the LabJackM library",
+    "name": "@picomes/ljm-ffi",
+    "version": "2.0.1",
+    "description": "nodejs library for using the LabJackM library (modified by PicoMES)",
     "author": {
-        "name": "Chris Johnson",
-        "url": "http://labjack.com"
+        "name": "Rigel Madraswalla",
+        "url": "http://picomes.com"
     },
     "main": "./lib/ljm-ffi",
     "license": "MIT",
@@ -14,10 +14,10 @@
         "MODBUS",
         "T7"
     ],
-    "homepage": "https://github.com/chrisJohn404/ljm-ffi",
+    "homepage": "https://github.com/pico-mes/ljm-ffi",
     "repository": {
         "type": "git",
-        "url": "https://github.com/chrisJohn404/ljm-ffi.git"
+        "url": "https://github.com/pico-mes/ljm-ffi.git"
     },
     "files": [
         "lib"
